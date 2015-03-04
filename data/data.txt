@@ -1,0 +1,4 @@
+image0_path
+image1_path
+image2_path
+image3_path
