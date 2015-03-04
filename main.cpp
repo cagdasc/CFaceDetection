@@ -62,9 +62,10 @@ int main(int argc, const char *argv[])
                 delete cface;
 
             } else if (strcmp(ctrl.c_str(), "-lf") == 0) {
+                label = string(argv[4]);
                 CFaceDetection *cface = new CFaceDetection(root_path);
                 Utils::root_path = root_path;
-                cface->liveDetection(-1); // set device id in here
+                cface->liveDetection(atoi(label.c_str())); // set device id in here
                 delete cface;
             } else {
                 usage();
@@ -109,7 +110,8 @@ void usage() {
             "./CIP -i [rootpath/] -df [imagefile.*] [label] Detect given face and save it with label in \"faces\" folder.\n"
             "./CIP -i [rootpath/] -df -l [imageslist.txt] [label] Detect given faces and save them with label in \"faces\" folder.\n"
             "./CIP -i [rootpath/] -pf [imagefile.*] Predict face using cvs file which name is \"dataset.txt\"\n"
-            "./CIP -i [rootpath/] -lf Open camera for live detection\n\n"
+            "./CIP -i [rootpath/] -lf Open camera for live detection\n"
+            "./CIP -i data/ -lf -1 Start live detection\n\n"
             "./CIP -t [rootpath/] [imagefoldersrootpath]" << endl;
 }
 
