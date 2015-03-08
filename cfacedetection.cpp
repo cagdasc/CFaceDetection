@@ -26,7 +26,8 @@ CFaceDetection::CFaceDetection(string root_path)
     this->root_path = root_path;
     cascade_file.insert(0, root_path);
     classifier.load(cascade_file);
-    this->face_recognizer = createEigenFaceRecognizer();
+    //this->face_recognizer = createEigenFaceRecognizer();
+    this->face_recognizer = createLBPHFaceRecognizer();
 }
 
 CFaceDetection::~CFaceDetection()
@@ -50,7 +51,19 @@ string CFaceDetection::getRootPath() {
     return root_path;
 }
 
-void CFaceDetection::prepareDetectedFace(vector<string> name_list, int which) {
+void CFaceDetection::detectFace(string name, int label) {
+    Mat raw_image = imread(name);
+    vector< Rect_<int> > raw_rect;
+    classifier.detectMultiScale(raw_image, raw_rect);
+
+    for(int j = 0; j < raw_rect.size(); j++) {
+        rectangle(raw_image, raw_rect.at(j), CV_RGB(255,0,0), 2);
+    }
+    imwrite(format("detected-%d.jpg", label), raw_image);
+    raw_image.release();
+}
+
+void CFaceDetection::prepareSampleFace(vector<string> name_list, int which) {
 
     string path(root_path);
     path.append(format("/faces/dataset%d/", which));
@@ -79,7 +92,7 @@ void CFaceDetection::prepareDetectedFace(vector<string> name_list, int which) {
 
 }
 
-void CFaceDetection::prepareDetectedFace(string name, int which) {
+void CFaceDetection::prepareSampleFace(string name, int which) {
 
     string path(root_path);
     path.append(format("/faces/dataset%d/", which));

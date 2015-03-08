@@ -41,8 +41,9 @@ public:
 
     void train_algorithm();
     void setFaceRecognizer(int which);
-    void prepareDetectedFace(vector<string> name_list, int which);
-    void prepareDetectedFace(string name, int which);
+    void detectFace(string name, int label);
+    void prepareSampleFace(vector<string> name_list, int which);
+    void prepareSampleFace(string name, int which);
     void predictFace(string which_face);
     void liveDetection(int deviceId);
     string getRootPath();
