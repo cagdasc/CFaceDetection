@@ -80,7 +80,7 @@ void CFaceDetection::prepareSampleFace(vector<string> name_list, int which) {
             Mat face = raw_image(raw_rect.at(j));
 
             cv::resize(face, face_resized, Size(face_width, face_height), 1.0, 1.0, INTER_CUBIC);
-            rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
+            //rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
 
             imwrite(format("%sresized%d-%d.pgm", path.c_str(), i, j), face_resized);
             face.release();
@@ -109,7 +109,7 @@ void CFaceDetection::prepareSampleFace(string name, int which) {
         Mat face = raw_image(raw_rect.at(j));
 
         cv::resize(face, face_resized, Size(face_width, face_height), 1.0, 1.0, INTER_CUBIC);
-        rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
+        //rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
 
         imwrite(format("%sresized%d-%d.pgm", path.c_str(), which, j), face_resized);
         face.release();
@@ -138,7 +138,7 @@ void CFaceDetection::predictFace(string which_face) {
         Mat face = raw_image(raw_rect.at(j));
 
         cv::resize(face, face_resized, Size(face_width, face_height), 1.0, 1.0, INTER_CUBIC);
-        rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
+        //rectangle(raw_image, raw_rect.at(j), CV_RGB(0, 255,0), 1);
         int prediction = face_recognizer->predict(face_resized);
         cout << "Prediction: " << prediction << endl;
 

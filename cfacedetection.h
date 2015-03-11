@@ -39,7 +39,7 @@ public:
     CFaceDetection(string root_path);
     ~CFaceDetection();
 
-    void train_algorithm();
+    //void train_algorithm();
     void setFaceRecognizer(int which);
     void detectFace(string name, int label);
     void prepareSampleFace(vector<string> name_list, int which);

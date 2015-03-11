@@ -118,7 +118,7 @@ void usage() {
          "./CIP -i [rootpath/] -df [imagefile.*] [label] Detect given face and save it with label in \"faces\" folder for create dataset.\n"
          "./CIP -i [rootpath/] -df -l [imageslist.txt] [label] Detect given faces and save them with label in \"faces\" folder.\n"
          "./CIP -i [rootpath/] -pf [imagefile.*] Predict face using cvs file which name is \"dataset.txt\"\n"
-         "./CIP -i [rootpath/] -lf Open camera for live detection\n"
+         "./CIP -i [rootpath/] -lf [deciveId] Open camera for live detection\n"
          "./CIP -i data/ -lf -1 Start live detection\n\n"
          "./CIP -t [rootpath/] [imagefoldersrootpath]" << endl;
 }
